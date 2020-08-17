@@ -3,13 +3,13 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using src.CsharpBasicSkeleton.Shared.Domain.FiltersByCriteria;
 
-namespace src.CsharpBasicSkeleton.Shared.Infrastructure.Criteria
+namespace src.CsharpBasicSkeleton.Shared.Infrastructure.FiltersByCriteria
 {
     public static class LinqBuilderByCriteria
     {
-        public static IQueryable<T> Where<T>(this IQueryable<T> collection, Domain.FiltersByCriteria.Criteria criteria)
+        public static IQueryable<T> Where<T>(this IQueryable<T> collection, Criteria criteria)
         {
-            if (criteria == null || !criteria.Filters.Values.Any())
+            if (criteria?.Filters == null || !criteria.Filters.Values.Any())
             {
                 return collection;
             }
@@ -51,9 +51,9 @@ namespace src.CsharpBasicSkeleton.Shared.Infrastructure.Criteria
         }
         
         public static IQueryable<T> Limit<T>(this IQueryable<T> collection,
-            Domain.FiltersByCriteria.Criteria criteria)
+            Criteria criteria)
         {
-            if (criteria == null || !criteria.Limit.HasValue )
+            if (criteria?.Limit == null || criteria.Limit.Value == 0 )
             {
                 return collection;
             }
