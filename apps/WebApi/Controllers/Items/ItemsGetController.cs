@@ -16,7 +16,7 @@ namespace FiltersByCriteria.Controllers.Items
             _bus = bus;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<IActionResult> Index([FromQuery] FiltersParam param)
         {
             if (param == null)
