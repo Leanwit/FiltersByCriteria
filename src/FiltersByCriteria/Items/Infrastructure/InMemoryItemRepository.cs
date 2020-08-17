@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using src.CsharpBasicSkeleton.Items.Domain;
 using src.CsharpBasicSkeleton.Shared.Domain.FiltersByCriteria;
-using src.CsharpBasicSkeleton.Shared.Infrastructure.Criteria;
+using src.CsharpBasicSkeleton.Shared.Infrastructure.FiltersByCriteria;
 
 namespace src.CsharpBasicSkeleton.Items.Infrastructure
 {
@@ -43,8 +43,8 @@ namespace src.CsharpBasicSkeleton.Items.Infrastructure
             return Task.FromResult(_context.AsQueryable()
                 .Where(criteria)
                 .OrderBy(criteria)
-                .Limit(criteria)
                 .Offset(criteria)
+                .Limit(criteria)
                 .ToList());
         }
     }
